@@ -7,7 +7,7 @@
 Summary:	IP::Country::DB_File - IPv4 and IPv6 to country translation using DB_File
 Name:		perl-IP-Country-DB_File
 Version:	3.03
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -15,11 +15,10 @@ Source0:	http://www.cpan.org/modules/by-module/IP/%{pdir}-%{pnam}-%{version}.tar
 # Source0-md5:	749ea4ca65126ef38d30bb386865c49e
 URL:		https://metacpan.org/dist/IP-Country-DB_File
 BuildRequires:	perl-devel >= 1:5.8.0
-BuildRequires:	rpm-perlprov >= 4.1-13
-BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
-BuildRequires:	perl-Math-Int64
+BuildRequires:	perl-Math-Int64 perl-DB_File
 %endif
+Requires: 	perl-DB_File
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} pure_install \
 	DESTDIR=$RPM_BUILD_ROOT
+find $RPM_BUILD_ROOT -type f -name .packlist -exec rm -f {} \;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -66,5 +66,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/IP::Country::DB_File*.3*
 
 %changelog
-* Fri Mar 15 2024 Jean-Philippe Pialasse <jpp@koozali.org> -3.03-1.sme
+* Fri Mar 15 2024 Jean-Philippe Pialasse <jpp@koozali.org> -3.03-2.sme
 - release for SME11 
