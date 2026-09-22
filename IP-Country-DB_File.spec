@@ -7,7 +7,7 @@
 Summary:	IP::Country::DB_File - IPv4 and IPv6 to country translation using DB_File
 Name:		perl-IP-Country-DB_File
 Version:	3.03
-Release:	2
+Release:	2%{?dist}
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
